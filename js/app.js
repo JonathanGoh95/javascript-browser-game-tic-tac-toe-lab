@@ -23,6 +23,7 @@ let choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 
 /*-------------------------------- Functions --------------------------------*/
 const playCircle = () => {
+  section.style.cursor = "pointer";
   if (clicked) {
     playerChoice = "Circle";
     message.textContent =
@@ -47,6 +48,7 @@ const playCircle = () => {
 };
 
 const playCross = () => {
+  section.style.cursor = "pointer";
   if (clicked) {
     playerChoice = "Cross";
     message.textContent =
@@ -78,7 +80,6 @@ const computerPlay = () => {
       document.getElementById(choices[randomIndex]).textContent !== "O" &&
       document.getElementById(choices[randomIndex]).textContent === ""
     ) {
-      // if (document.getElementById(`${randomIndex}`).textContent === "") {
       document.getElementById(choices[randomIndex]).textContent = "X";
       choices.splice(randomIndex, 1);
       playCircle();
@@ -88,7 +89,6 @@ const computerPlay = () => {
       document.getElementById(choices[randomIndex]).textContent !== "X" &&
       document.getElementById(choices[randomIndex]).textContent === ""
     ) {
-      // if (document.getElementById(`${randomIndex}`).textContent === "") {
       document.getElementById(choices[randomIndex]).textContent = "O";
       choices.splice(randomIndex, 1);
       playCross();
@@ -134,6 +134,7 @@ const winLose = () => {
       message.innerHTML =
         "Congratulations! You Won!<br />Click the 'Reset Game' button below to play again!";
       gameEnd = true;
+      section.style.cursor = "default";
     } else if (
       (tile0.textContent === "X" &&
         tile1.textContent === "X" &&
@@ -163,6 +164,7 @@ const winLose = () => {
       message.innerHTML =
         "Sorry, You Lost!<br />Click the 'Reset Game' button below to play again!";
       gameEnd = true;
+      section.style.cursor = "default";
     }
   } else if (playerChoice === "Cross") {
     if (
@@ -194,6 +196,7 @@ const winLose = () => {
       message.innerHTML =
         "Congratulations! You Won!<br />Click the 'Reset Game' button below to play again!";
       gameEnd = true;
+      section.style.cursor = "default";
     } else if (
       (tile0.textContent === "O" &&
         tile1.textContent === "O" &&
@@ -223,17 +226,18 @@ const winLose = () => {
       message.innerHTML =
         "Sorry, You Lost!<br />Click the 'Reset Game' button below to play again!";
       gameEnd = true;
+      section.style.cursor = "default";
     }
   }
 };
 
 const resetGame = () => {
-  for (let i = 0; i < 9; i++) {
+  /* for (let i = 0; i < 9; i++) {
     document.getElementById(`${i}`).textContent = "";
   }
-  //   playerChoice = "";
-  //   gameEnd = false;
-  //   message.innerHTML = startingMessage;
+    playerChoice = "";
+    gameEnd = false;
+  message.innerHTML = startingMessage; */
   location.reload();
 };
 /*----------------------------- Event Listeners -----------------------------*/
