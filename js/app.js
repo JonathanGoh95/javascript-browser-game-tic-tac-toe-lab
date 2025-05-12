@@ -27,13 +27,14 @@ const tiles = [
 /*---------------------------- Variables (state) ----------------------------*/
 let playerChoice = "";
 let clicked = true;
-let startingMessage = message.innerHTML;
+const startingMessage = message.innerHTML;
+console.log(startingMessage);
 let gameEnd = false;
 let choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 /*------------------------ Cached Element References ------------------------*/
 
 /*-------------------------------- Functions --------------------------------*/
-const playCircle = () => {
+/* const playCircle = () => {
   section.style.cursor = "pointer";
   if (clicked) {
     playerChoice = "Circle";
@@ -81,7 +82,49 @@ const playCross = () => {
       console.log(choices);
     }
   });
+}; */
+
+const playCircle = () => {
+  if (clicked) {
+    playerChoice = "Circle";
+    message.textContent =
+      "You have selected ⭕️. Click on any of the tiles below to begin playing.";
+    clicked = false;
+  } else {
+    message.textContent = "";
+  }
 };
+
+const playCross = () => {
+  if (clicked) {
+    playerChoice = "Cross";
+    message.textContent =
+      "You have selected ❌. Click on any of the tiles below to begin playing.";
+    clicked = false;
+  } else {
+    message.textContent = "";
+  }
+};
+
+section.addEventListener("click", (event) => {
+  if (
+    event.target.classList.contains("sqr") &&
+    event.target.textContent === "" &&
+    !gameEnd
+  ) {
+    if (playerChoice === "Circle") {
+      event.target.textContent = "O";
+      choices.splice(choices.indexOf(event.target.id), 1);
+      computerPlay();
+      winLose();
+    } else if (playerChoice === "Cross") {
+      event.target.textContent = "X";
+      choices.splice(choices.indexOf(event.target.id), 1);
+      computerPlay();
+      winLose();
+    }
+  }
+});
 
 const computerPlay = () => {
   if (choices.length > 0) {
@@ -243,14 +286,22 @@ const winLose = () => {
 };
 
 const resetGame = () => {
-  /* for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 9; i++) {
     document.getElementById(`${i}`).textContent = "";
   }
-    playerChoice = "";
-    gameEnd = false;
-  message.innerHTML = startingMessage; */
-  location.reload();
+  playerChoice = "";
+  gameEnd = false;
+  clicked = true;
+  choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+  message.innerHTML = startingMessage;
+  section.style.cursor = "pointer";
+  // circle.removeEventListener("click", playCircle);
+  // cross.removeEventListener("click", playCross);
+  // circle.addEventListener("click", playCircle);
+  // cross.addEventListener("click", playCross);
+  // location.reload();
 };
+
 /*----------------------------- Event Listeners -----------------------------*/
 circle.addEventListener("click", playCircle);
 cross.addEventListener("click", playCross);
