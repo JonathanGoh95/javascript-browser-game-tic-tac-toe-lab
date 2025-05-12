@@ -4,15 +4,26 @@ const message = document.getElementById("message");
 const circle = document.getElementById("circle");
 const cross = document.getElementById("cross");
 const reset = document.getElementById("resetButton");
-const tile0 = document.getElementById("0");
-const tile1 = document.getElementById("1");
-const tile2 = document.getElementById("2");
-const tile3 = document.getElementById("3");
-const tile4 = document.getElementById("4");
-const tile5 = document.getElementById("5");
-const tile6 = document.getElementById("6");
-const tile7 = document.getElementById("7");
-const tile8 = document.getElementById("8");
+const tiles = [
+  document.getElementById("0"),
+  document.getElementById("1"),
+  document.getElementById("2"),
+  document.getElementById("3"),
+  document.getElementById("4"),
+  document.getElementById("5"),
+  document.getElementById("6"),
+  document.getElementById("7"),
+  document.getElementById("8"),
+];
+// const tiles[0] = document.getElementById("0");
+// const tiles[1] = document.getElementById("1");
+// const tiles[2] = document.getElementById("2");
+// const tiles[3] = document.getElementById("3");
+// const tiles[4] = document.getElementById("4");
+// const tiles[5] = document.getElementById("5");
+// const tiles[6] = document.getElementById("6");
+// const tiles[7] = document.getElementById("7");
+// const tiles[8] = document.getElementById("8");
 /*---------------------------- Variables (state) ----------------------------*/
 let playerChoice = "";
 let clicked = true;
@@ -106,60 +117,60 @@ const computerPlay = () => {
 const winLose = () => {
   if (playerChoice === "Circle") {
     if (
-      (tile0.textContent === "O" &&
-        tile1.textContent === "O" &&
-        tile2.textContent === "O") ||
-      (tile3.textContent === "O" &&
-        tile4.textContent === "O" &&
-        tile5.textContent === "O") ||
-      (tile6.textContent === "O" &&
-        tile7.textContent === "O" &&
-        tile8.textContent === "O") ||
-      (tile0.textContent === "O" &&
-        tile3.textContent === "O" &&
-        tile6.textContent === "O") ||
-      (tile1.textContent === "O" &&
-        tile4.textContent === "O" &&
-        tile7.textContent === "O") ||
-      (tile2.textContent === "O" &&
-        tile5.textContent === "O" &&
-        tile8.textContent === "O") ||
-      (tile0.textContent === "O" &&
-        tile4.textContent === "O" &&
-        tile8.textContent === "O") ||
-      (tile2.textContent === "O" &&
-        tile4.textContent === "O" &&
-        tile6.textContent === "O")
+      (tiles[0].textContent === "O" &&
+        tiles[1].textContent === "O" &&
+        tiles[2].textContent === "O") ||
+      (tiles[3].textContent === "O" &&
+        tiles[4].textContent === "O" &&
+        tiles[5].textContent === "O") ||
+      (tiles[6].textContent === "O" &&
+        tiles[7].textContent === "O" &&
+        tiles[8].textContent === "O") ||
+      (tiles[0].textContent === "O" &&
+        tiles[3].textContent === "O" &&
+        tiles[6].textContent === "O") ||
+      (tiles[1].textContent === "O" &&
+        tiles[4].textContent === "O" &&
+        tiles[7].textContent === "O") ||
+      (tiles[2].textContent === "O" &&
+        tiles[5].textContent === "O" &&
+        tiles[8].textContent === "O") ||
+      (tiles[0].textContent === "O" &&
+        tiles[4].textContent === "O" &&
+        tiles[8].textContent === "O") ||
+      (tiles[2].textContent === "O" &&
+        tiles[4].textContent === "O" &&
+        tiles[6].textContent === "O")
     ) {
       message.innerHTML =
         "Congratulations! You Won!<br />Click the 'Reset Game' button below to play again!";
       gameEnd = true;
       section.style.cursor = "default";
     } else if (
-      (tile0.textContent === "X" &&
-        tile1.textContent === "X" &&
-        tile2.textContent === "X") ||
-      (tile3.textContent === "X" &&
-        tile4.textContent === "X" &&
-        tile5.textContent === "X") ||
-      (tile6.textContent === "X" &&
-        tile7.textContent === "X" &&
-        tile8.textContent === "X") ||
-      (tile0.textContent === "X" &&
-        tile3.textContent === "X" &&
-        tile6.textContent === "X") ||
-      (tile1.textContent === "X" &&
-        tile4.textContent === "X" &&
-        tile7.textContent === "X") ||
-      (tile2.textContent === "X" &&
-        tile5.textContent === "X" &&
-        tile8.textContent === "X") ||
-      (tile0.textContent === "X" &&
-        tile4.textContent === "X" &&
-        tile8.textContent === "X") ||
-      (tile2.textContent === "X" &&
-        tile4.textContent === "X" &&
-        tile6.textContent === "X")
+      (tiles[0].textContent === "X" &&
+        tiles[1].textContent === "X" &&
+        tiles[2].textContent === "X") ||
+      (tiles[3].textContent === "X" &&
+        tiles[4].textContent === "X" &&
+        tiles[5].textContent === "X") ||
+      (tiles[6].textContent === "X" &&
+        tiles[7].textContent === "X" &&
+        tiles[8].textContent === "X") ||
+      (tiles[0].textContent === "X" &&
+        tiles[3].textContent === "X" &&
+        tiles[6].textContent === "X") ||
+      (tiles[1].textContent === "X" &&
+        tiles[4].textContent === "X" &&
+        tiles[7].textContent === "X") ||
+      (tiles[2].textContent === "X" &&
+        tiles[5].textContent === "X" &&
+        tiles[8].textContent === "X") ||
+      (tiles[0].textContent === "X" &&
+        tiles[4].textContent === "X" &&
+        tiles[8].textContent === "X") ||
+      (tiles[2].textContent === "X" &&
+        tiles[4].textContent === "X" &&
+        tiles[6].textContent === "X")
     ) {
       message.innerHTML =
         "Sorry, You Lost!<br />Click the 'Reset Game' button below to play again!";
@@ -168,60 +179,60 @@ const winLose = () => {
     }
   } else if (playerChoice === "Cross") {
     if (
-      (tile0.textContent === "X" &&
-        tile1.textContent === "X" &&
-        tile2.textContent === "X") ||
-      (tile3.textContent === "X" &&
-        tile4.textContent === "X" &&
-        tile5.textContent === "X") ||
-      (tile6.textContent === "X" &&
-        tile7.textContent === "X" &&
-        tile8.textContent === "X") ||
-      (tile0.textContent === "X" &&
-        tile3.textContent === "X" &&
-        tile6.textContent === "X") ||
-      (tile1.textContent === "X" &&
-        tile4.textContent === "X" &&
-        tile7.textContent === "X") ||
-      (tile2.textContent === "X" &&
-        tile5.textContent === "X" &&
-        tile8.textContent === "X") ||
-      (tile0.textContent === "X" &&
-        tile4.textContent === "X" &&
-        tile8.textContent === "X") ||
-      (tile2.textContent === "X" &&
-        tile4.textContent === "X" &&
-        tile6.textContent === "X")
+      (tiles[0].textContent === "X" &&
+        tiles[1].textContent === "X" &&
+        tiles[2].textContent === "X") ||
+      (tiles[3].textContent === "X" &&
+        tiles[4].textContent === "X" &&
+        tiles[5].textContent === "X") ||
+      (tiles[6].textContent === "X" &&
+        tiles[7].textContent === "X" &&
+        tiles[8].textContent === "X") ||
+      (tiles[0].textContent === "X" &&
+        tiles[3].textContent === "X" &&
+        tiles[6].textContent === "X") ||
+      (tiles[1].textContent === "X" &&
+        tiles[4].textContent === "X" &&
+        tiles[7].textContent === "X") ||
+      (tiles[2].textContent === "X" &&
+        tiles[5].textContent === "X" &&
+        tiles[8].textContent === "X") ||
+      (tiles[0].textContent === "X" &&
+        tiles[4].textContent === "X" &&
+        tiles[8].textContent === "X") ||
+      (tiles[2].textContent === "X" &&
+        tiles[4].textContent === "X" &&
+        tiles[6].textContent === "X")
     ) {
       message.innerHTML =
         "Congratulations! You Won!<br />Click the 'Reset Game' button below to play again!";
       gameEnd = true;
       section.style.cursor = "default";
     } else if (
-      (tile0.textContent === "O" &&
-        tile1.textContent === "O" &&
-        tile2.textContent === "O") ||
-      (tile3.textContent === "O" &&
-        tile4.textContent === "O" &&
-        tile5.textContent === "O") ||
-      (tile6.textContent === "O" &&
-        tile7.textContent === "O" &&
-        tile8.textContent === "O") ||
-      (tile0.textContent === "O" &&
-        tile3.textContent === "O" &&
-        tile6.textContent === "O") ||
-      (tile1.textContent === "O" &&
-        tile4.textContent === "O" &&
-        tile7.textContent === "O") ||
-      (tile2.textContent === "O" &&
-        tile5.textContent === "O" &&
-        tile8.textContent === "O") ||
-      (tile0.textContent === "O" &&
-        tile4.textContent === "O" &&
-        tile8.textContent === "O") ||
-      (tile2.textContent === "O" &&
-        tile4.textContent === "O" &&
-        tile6.textContent === "O")
+      (tiles[0].textContent === "O" &&
+        tiles[1].textContent === "O" &&
+        tiles[2].textContent === "O") ||
+      (tiles[3].textContent === "O" &&
+        tiles[4].textContent === "O" &&
+        tiles[5].textContent === "O") ||
+      (tiles[6].textContent === "O" &&
+        tiles[7].textContent === "O" &&
+        tiles[8].textContent === "O") ||
+      (tiles[0].textContent === "O" &&
+        tiles[3].textContent === "O" &&
+        tiles[6].textContent === "O") ||
+      (tiles[1].textContent === "O" &&
+        tiles[4].textContent === "O" &&
+        tiles[7].textContent === "O") ||
+      (tiles[2].textContent === "O" &&
+        tiles[5].textContent === "O" &&
+        tiles[8].textContent === "O") ||
+      (tiles[0].textContent === "O" &&
+        tiles[4].textContent === "O" &&
+        tiles[8].textContent === "O") ||
+      (tiles[2].textContent === "O" &&
+        tiles[4].textContent === "O" &&
+        tiles[6].textContent === "O")
     ) {
       message.innerHTML =
         "Sorry, You Lost!<br />Click the 'Reset Game' button below to play again!";
