@@ -25,10 +25,12 @@ body {
 
 #circle {
   font-size: 1.5em;
+  margin: 0 0 20px 0;
 }
 
 #cross {
   font-size: 1.5em;
+  margin: 0 0 20px 0;
 }
 
 #circle:hover {

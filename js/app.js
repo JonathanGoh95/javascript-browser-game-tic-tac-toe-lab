@@ -27,65 +27,17 @@ const tiles = [
 /*---------------------------- Variables (state) ----------------------------*/
 let playerChoice = "";
 let clicked = true;
-const startingMessage = message.innerHTML;
-console.log(startingMessage);
+const startingMessage = message.textContent;
 let gameEnd = false;
 let choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 /*------------------------ Cached Element References ------------------------*/
 
 /*-------------------------------- Functions --------------------------------*/
-/* const playCircle = () => {
-  section.style.cursor = "pointer";
-  if (clicked) {
-    playerChoice = "Circle";
-    message.textContent =
-      "You have selected ⭕️. Click on any of the tiles below to begin playing.";
-  } else {
-    message.textContent = "";
-  }
-  section.addEventListener("click", (event) => {
-    clicked = false;
-    if (
-      event.target.classList.contains("sqr") &&
-      event.target.textContent === "" &&
-      gameEnd === false
-    ) {
-      event.target.textContent = "O";
-      choices.splice(choices.indexOf(event.target.id), 1);
-      computerPlay();
-      winLose();
-      console.log(choices);
-    }
-  });
-};
-
-const playCross = () => {
-  section.style.cursor = "pointer";
-  if (clicked) {
-    playerChoice = "Cross";
-    message.textContent =
-      "You have selected ❌. Click on any of the tiles below to begin playing.";
-  } else {
-    message.textContent = "";
-  }
-  section.addEventListener("click", (event) => {
-    clicked = false;
-    if (
-      event.target.classList.contains("sqr") &&
-      event.target.textContent === "" &&
-      gameEnd === false
-    ) {
-      event.target.textContent = "X";
-      choices.splice(choices.indexOf(event.target.id), 1);
-      computerPlay();
-      winLose();
-      console.log(choices);
-    }
-  });
-}; */
-
 const playCircle = () => {
+  // console.log("Circle");
   if (clicked) {
+    circle.style.display = "none";
+    cross.style.display = "none";
     playerChoice = "Circle";
     message.textContent =
       "You have selected ⭕️. Click on any of the tiles below to begin playing.";
@@ -96,6 +48,9 @@ const playCircle = () => {
 };
 
 const playCross = () => {
+  // console.log("Cross");
+  circle.style.display = "none";
+  cross.style.display = "none";
   if (clicked) {
     playerChoice = "Cross";
     message.textContent =
@@ -107,6 +62,7 @@ const playCross = () => {
 };
 
 section.addEventListener("click", (event) => {
+  // console.log("Tile");
   if (
     event.target.classList.contains("sqr") &&
     event.target.textContent === "" &&
@@ -293,13 +249,9 @@ const resetGame = () => {
   gameEnd = false;
   clicked = true;
   choices = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
-  message.innerHTML = startingMessage;
-  section.style.cursor = "pointer";
-  // circle.removeEventListener("click", playCircle);
-  // cross.removeEventListener("click", playCross);
-  // circle.addEventListener("click", playCircle);
-  // cross.addEventListener("click", playCross);
-  // location.reload();
+  message.textContent = startingMessage;
+  circle.style.display = "inline";
+  cross.style.display = "inline";
 };
 
 /*----------------------------- Event Listeners -----------------------------*/
