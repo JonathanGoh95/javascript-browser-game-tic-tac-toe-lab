@@ -15,15 +15,16 @@ const tiles = [
   document.getElementById("7"),
   document.getElementById("8"),
 ];
-// const tiles[0] = document.getElementById("0");
-// const tiles[1] = document.getElementById("1");
-// const tiles[2] = document.getElementById("2");
-// const tiles[3] = document.getElementById("3");
-// const tiles[4] = document.getElementById("4");
-// const tiles[5] = document.getElementById("5");
-// const tiles[6] = document.getElementById("6");
-// const tiles[7] = document.getElementById("7");
-// const tiles[8] = document.getElementById("8");
+const winningPatterns = [
+  [0, 1, 2], // Top row
+  [3, 4, 5], // Middle row
+  [6, 7, 8], // Bottom row
+  [0, 3, 6], // Left column
+  [1, 4, 7], // Middle column
+  [2, 5, 8], // Right column
+  [0, 4, 8], // Diagonal top-left to bottom-right
+  [2, 4, 6], // Diagonal top-right to bottom-left
+];
 /*---------------------------- Variables (state) ----------------------------*/
 let playerChoice = "";
 let clicked = true;
@@ -113,126 +114,34 @@ const computerPlay = () => {
   }
 };
 
+const checkWin = (symbol) => {
+  return winningPatterns.some(
+    (
+      pattern //Returns true when one of the conditions in the winningPatterns array is fulfulled
+    ) => pattern.every((index) => tiles[index].textContent === symbol) //Ensures that the values are consistent in each array
+  );
+};
+
 const winLose = () => {
   if (playerChoice === "Circle") {
-    if (
-      (tiles[0].textContent === "O" &&
-        tiles[1].textContent === "O" &&
-        tiles[2].textContent === "O") ||
-      (tiles[3].textContent === "O" &&
-        tiles[4].textContent === "O" &&
-        tiles[5].textContent === "O") ||
-      (tiles[6].textContent === "O" &&
-        tiles[7].textContent === "O" &&
-        tiles[8].textContent === "O") ||
-      (tiles[0].textContent === "O" &&
-        tiles[3].textContent === "O" &&
-        tiles[6].textContent === "O") ||
-      (tiles[1].textContent === "O" &&
-        tiles[4].textContent === "O" &&
-        tiles[7].textContent === "O") ||
-      (tiles[2].textContent === "O" &&
-        tiles[5].textContent === "O" &&
-        tiles[8].textContent === "O") ||
-      (tiles[0].textContent === "O" &&
-        tiles[4].textContent === "O" &&
-        tiles[8].textContent === "O") ||
-      (tiles[2].textContent === "O" &&
-        tiles[4].textContent === "O" &&
-        tiles[6].textContent === "O")
-    ) {
+    if (checkWin("O")) {
       message.innerHTML =
         "Congratulations! You Won!<br />Click the 'Reset Game' button below to play again!";
       gameEnd = true;
       section.style.cursor = "default";
-    } else if (
-      (tiles[0].textContent === "X" &&
-        tiles[1].textContent === "X" &&
-        tiles[2].textContent === "X") ||
-      (tiles[3].textContent === "X" &&
-        tiles[4].textContent === "X" &&
-        tiles[5].textContent === "X") ||
-      (tiles[6].textContent === "X" &&
-        tiles[7].textContent === "X" &&
-        tiles[8].textContent === "X") ||
-      (tiles[0].textContent === "X" &&
-        tiles[3].textContent === "X" &&
-        tiles[6].textContent === "X") ||
-      (tiles[1].textContent === "X" &&
-        tiles[4].textContent === "X" &&
-        tiles[7].textContent === "X") ||
-      (tiles[2].textContent === "X" &&
-        tiles[5].textContent === "X" &&
-        tiles[8].textContent === "X") ||
-      (tiles[0].textContent === "X" &&
-        tiles[4].textContent === "X" &&
-        tiles[8].textContent === "X") ||
-      (tiles[2].textContent === "X" &&
-        tiles[4].textContent === "X" &&
-        tiles[6].textContent === "X")
-    ) {
+    } else if (checkWin("X")) {
       message.innerHTML =
         "Sorry, You Lost!<br />Click the 'Reset Game' button below to play again!";
       gameEnd = true;
       section.style.cursor = "default";
     }
   } else if (playerChoice === "Cross") {
-    if (
-      (tiles[0].textContent === "X" &&
-        tiles[1].textContent === "X" &&
-        tiles[2].textContent === "X") ||
-      (tiles[3].textContent === "X" &&
-        tiles[4].textContent === "X" &&
-        tiles[5].textContent === "X") ||
-      (tiles[6].textContent === "X" &&
-        tiles[7].textContent === "X" &&
-        tiles[8].textContent === "X") ||
-      (tiles[0].textContent === "X" &&
-        tiles[3].textContent === "X" &&
-        tiles[6].textContent === "X") ||
-      (tiles[1].textContent === "X" &&
-        tiles[4].textContent === "X" &&
-        tiles[7].textContent === "X") ||
-      (tiles[2].textContent === "X" &&
-        tiles[5].textContent === "X" &&
-        tiles[8].textContent === "X") ||
-      (tiles[0].textContent === "X" &&
-        tiles[4].textContent === "X" &&
-        tiles[8].textContent === "X") ||
-      (tiles[2].textContent === "X" &&
-        tiles[4].textContent === "X" &&
-        tiles[6].textContent === "X")
-    ) {
+    if (checkWin("X")) {
       message.innerHTML =
         "Congratulations! You Won!<br />Click the 'Reset Game' button below to play again!";
       gameEnd = true;
       section.style.cursor = "default";
-    } else if (
-      (tiles[0].textContent === "O" &&
-        tiles[1].textContent === "O" &&
-        tiles[2].textContent === "O") ||
-      (tiles[3].textContent === "O" &&
-        tiles[4].textContent === "O" &&
-        tiles[5].textContent === "O") ||
-      (tiles[6].textContent === "O" &&
-        tiles[7].textContent === "O" &&
-        tiles[8].textContent === "O") ||
-      (tiles[0].textContent === "O" &&
-        tiles[3].textContent === "O" &&
-        tiles[6].textContent === "O") ||
-      (tiles[1].textContent === "O" &&
-        tiles[4].textContent === "O" &&
-        tiles[7].textContent === "O") ||
-      (tiles[2].textContent === "O" &&
-        tiles[5].textContent === "O" &&
-        tiles[8].textContent === "O") ||
-      (tiles[0].textContent === "O" &&
-        tiles[4].textContent === "O" &&
-        tiles[8].textContent === "O") ||
-      (tiles[2].textContent === "O" &&
-        tiles[4].textContent === "O" &&
-        tiles[6].textContent === "O")
-    ) {
+    } else if (checkWin("O")) {
       message.innerHTML =
         "Sorry, You Lost!<br />Click the 'Reset Game' button below to play again!";
       gameEnd = true;
