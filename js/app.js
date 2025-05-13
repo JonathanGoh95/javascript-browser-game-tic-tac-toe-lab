@@ -151,6 +151,7 @@ const winLose = () => {
 };
 
 const resetGame = () => {
+  reset.style.backgroundColor = "grey";
   for (let i = 0; i < 9; i++) {
     document.getElementById(`${i}`).textContent = "";
   }
@@ -166,4 +167,11 @@ const resetGame = () => {
 /*----------------------------- Event Listeners -----------------------------*/
 circle.addEventListener("click", playCircle);
 cross.addEventListener("click", playCross);
-reset.addEventListener("click", resetGame);
+reset.addEventListener("mousedown", resetGame);
+//Addtional styling/behaviour when Reset Game Button is clicked
+reset.addEventListener("mouseup", () => {
+  reset.style.backgroundColor = "lightcoral";
+});
+reset.addEventListener("mouseleave", () => {
+  reset.style.backgroundColor = "lightcoral";
+});
